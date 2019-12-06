@@ -1,0 +1,104 @@
+<mvc:View controllerName="dj.Dashboard.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" class="sapUiSizeCompact">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<f:SimpleForm id="SimpleFormChange354" editable="true" layout="ResponsiveGridLayout" title="Search Jobs" maxContainerCols="2"
+							labelSpanXL="2" labelSpanL="2" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4"
+							emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+							<f:content>
+								<Label text="From Date" />
+								<DatePicker id="fromdate" required="true" displayFormat="MM-dd-yyyy" valueFormat="MMM d y">
+									<layoutData>
+										<l:GridData span="XL1 L2 M2 S4"/>
+									</layoutData>
+								</DatePicker>
+								<Label text="To Date">
+									<layoutData>
+										<l:GridData span="XL1 L2 M2 S4"/>
+									</layoutData>
+								</Label>
+								<DatePicker id="todate" required="true" displayFormat="MM-dd-yyyy" valueFormat="MMM d y">
+									<layoutData>
+										<l:GridData span="XL1 L2 M2 S4"/>
+									</layoutData>
+								</DatePicker>
+								<Label text="SalesOrderID"/>
+								<Input id="salesOrderid">
+									<layoutData>
+										<l:GridData span="XL1 L2 M2 S4"/>
+									</layoutData>
+								</Input>
+								<Label text="CustomerName">
+									<layoutData>
+										<l:GridData span="XL1 L2 M2 S4"/>
+									</layoutData>
+								</Label>
+								<Input id="customerName">
+									<layoutData>
+										<l:GridData span="XL1 L2 M2 S4"/>
+									</layoutData>
+								</Input>
+								<Label text="DeliveryStatus"/>
+								<Input id="deliveryStatus">
+									<layoutData>
+										<l:GridData span="XL1 L2 M2 S4"/>
+									</layoutData>
+								</Input>
+								<Label text=""/>
+								<Label text=""/>
+								<Button text="Search" press="onSearch" icon="sap-icon://search" type="Emphasized" width="50%">
+									<layoutData>
+										<l:GridData span="XL1 L2 M2 S4"/>
+									</layoutData>
+								</Button>
+							</f:content>
+						</f:SimpleForm>
+						<Table id="salesorderid" items="{/SalesOrderSet}" visible="false" alternateRowColors="true">
+							<headerToolbar>
+							</headerToolbar>
+							<layoutData>
+								<l:GridData span="L5 M5 S5"/>
+							</layoutData>
+							<columns>
+								<Column>
+									<Text text="Date"/>
+								</Column>
+								<Column>
+									<Text text="SalesOrderID"/>
+								</Column>
+								<Column>
+									<Text text="CustomerName"/>
+								</Column>
+								<Column>
+									<Text text="CustomerID"/>
+								</Column>
+								<Column>
+									<Text text="DeliveryStatus"/>
+								</Column>
+							</columns>
+							<items>
+								<ColumnListItem type="Navigation" press="goToDetailView">
+									<cells>
+										<Text text="{CreatedAt}"/>
+										<Text text="{SalesOrderID}"/>
+										<Text text="{CustomerName}"/>
+										<Text text="{CustomerID}"/>
+										<Text text="{DeliveryStatus}"/>
+										
+										<!--<CheckBox selected="{Active}"/>-->
+										
+									</cells>
+								</ColumnListItem>
+							</items>
+						</Table>
+						
+						
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

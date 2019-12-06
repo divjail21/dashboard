@@ -1,0 +1,74 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="dj.Dashboard.controller.DetailView"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:semantic="sap.f.semantic" xmlns:tnt="sap.tnt"
+	xmlns:l="sap.ui.layout" xmlns:dnd="sap.ui.core.dnd">
+	<semantic:SemanticPage id="detailPage" showFooter="true">
+		<semantic:titleHeading>
+			<Title text="{CustomerName}" level="H2"/>
+		</semantic:titleHeading>
+		<semantic:headerContent>
+			<ObjectAttribute title="ProductID"/>
+		</semantic:headerContent>
+		<semantic:content>
+			<l:VerticalLayout>
+				<Table id="lineItemsList" width="auto" items="{ToLineItems}" mode="SingleSelectMaster" sticky="ColumnHeaders,HeaderToolbar">
+					<headerToolbar>
+						<Toolbar>
+							<Title id="lineItemsTitle" text="Product" titleStyle="H3" level="H3"/>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://add" tooltip="Create a new order item for this order" press=".onCreate"/>
+							<Button icon="sap-icon://delete" tooltip="delete" press=".onDelete"/>
+						</Toolbar>
+					</headerToolbar>
+					<columns>
+						<Column>
+							<Text text="SalesOrderID"/>
+						</Column>
+						<Column>
+							<Text text="ProductID"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="ItemPosition"/>
+						</Column>
+						<Column>
+							<Text text="GrossAmount"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+							<Text text="NetAmount"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+							<Text text="DeliveryDate"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+							<Text text="Quantity"/>
+						</Column>
+					</columns>
+					<dragDropConfig>
+						<dnd:DragInfo sourceAggregation="items"/>
+					</dragDropConfig>
+					<items>
+						<ColumnListItem type="Navigation">
+							<cells>
+								<ObjectNumber number="{SalesOrderID}"/>
+								<ObjectNumber number="{ProductID}"/>
+								<ObjectNumber number="{ItemPosition}"/>
+								<ObjectIdentifier title="{GrossAmount}" text="{CurrencyCode}"/>
+								<ObjectIdentifier title="{NetAmount}" text="{CurrencyCode}"/>
+								<Text text="{ path: 'DeliveryDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'medium' } }"/>
+								<ObjectNumber number="{Quantity}" unit="{QuantityUnit}"/>
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</l:VerticalLayout>
+		</semantic:content>
+		<semantic:positiveAction>
+			<semantic:PositiveAction/>
+		</semantic:positiveAction>
+		<semantic:negativeAction>
+			<semantic:NegativeAction/>
+		</semantic:negativeAction>
+		<semantic:footerCustomActions>
+			<Button text="Cancel"/>
+		</semantic:footerCustomActions>
+	</semantic:SemanticPage>
+</mvc:View>
